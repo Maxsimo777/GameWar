@@ -16,6 +16,8 @@ import java.awt.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import com.company.rase.GroupOneBean;
+import javax.naming.*;
 
 public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = 1L;
@@ -47,10 +49,14 @@ public class Game extends Canvas implements Runnable {
     public static Sprite goblin2;
     public static Sprite goblin3;
 
+    public static DrawFistTeam drawFistTeam;
+
     private static int x = 0;
     private static int y = 0;
 
     private static int ran;
+
+    JTextArea textArea2 = new JTextArea();
 
     public void start() {
         running = true;
@@ -63,7 +69,7 @@ public class Game extends Canvas implements Runnable {
 
         init();
 
-        while(running) {
+        while (running) {
             delta = System.currentTimeMillis() - lastTime;
             lastTime = System.currentTimeMillis();
             render();
@@ -72,7 +78,6 @@ public class Game extends Canvas implements Runnable {
     }
 
     public void init() {
-        addKeyListener(new KeyInputHandler());
         mage = getSprite("com/company/rase/image/Elves/Mage.jpg");
         archerElf = getSprite("com/company/rase/image/Elves/ArcherElf.jpg");
         archerElf1 = getSprite("com/company/rase/image/Elves/ArcherElf.jpg");
@@ -96,14 +101,16 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         g.setColor(Color.white);
         g.fillRect(0, 0, getWidth(), getHeight());
-        mage.draw(g, x+10, y+180);
-        archerElf.draw(g,120,30);
-        archerElf1.draw(g,120,180);
-        archerElf2.draw(g,120,330);
-        warriorElf.draw(g,250,30);
-        warriorElf1.draw(g,250,180);
-        warriorElf2.draw(g,250,330);
-        warriorElf3.draw(g,250,480);
+        mage.draw(g, x + 10, y + 180);
+        archerElf.draw(g, 120, 30);
+        archerElf1.draw(g, 120, 180);
+        archerElf2.draw(g, 120, 330);
+        warriorElf.draw(g, 250, 30);
+        warriorElf1.draw(g, 250, 180);
+        warriorElf2.draw(g, 250, 330);
+        warriorElf3.draw(g, 250, 480);
+        JTextArea TextArea = new JTextArea(10, 30);
+        TextArea.setText("768678686868686868");
         g.dispose();
         bs.show();
     }
@@ -136,37 +143,47 @@ public class Game extends Canvas implements Runnable {
         Game game = new Game();
         game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         JFrame frame = new JFrame(Game.NAME);
-        frame.setSize(800,400);
+        JTextArea textArea2 = new JTextArea();
+        frame.setSize(800, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.add(game, BorderLayout.CENTER);
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
-     //   frame.getContentPane().add(new JPanel());
-      //  ((JPanel)frame.getContentPane().getComponent(0)).add(new JLabel("Hello"));
-      //  frame.getContentPane().invalidate();
+
+        Frame1 frame1 = new Frame1();
+        frame1.pack();
+        frame1.setLocationRelativeTo(null);
+        frame1.setVisible(true);
+        // frame.getContentPane().add(new JPanel());
+        // ((JPanel)frame.getContentPane().getComponent(0)).add(new JLabel("Hello"));
+        // frame.getContentPane().invalidate();
+        //  JTextArea  TextArea = new JTextArea(10,30);
+        //  TextArea.setText("54353454");
+
+
         game.start();
     }
 
-    private class KeyInputHandler extends KeyAdapter {
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                leftPressed = true;
-            }
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                rightPressed = true;
-            }
+    public JTextArea getTextArea() {
+        return textArea2;
+    }
+
+    public static class Frame1 extends JFrame {
+        private JTextArea textArea1 = new JTextArea();
+
+        public Frame1() {
+            setLayout(new FlowLayout());
+            add(textArea1);
+            textArea1.setText("Вывод стастики игры");
         }
 
-        public void keyReleased(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                leftPressed = false;
-            }
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                rightPressed = false;
-            }
+        public JTextArea getTextArea() {
+            return textArea1;
         }
+
+
     }
 }
 

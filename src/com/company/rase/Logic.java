@@ -13,9 +13,12 @@ public class Logic {
 
     public void CreateGroupTeam() {
 
-        GroupOneBean TeamOne = new GroupOneBean(typecomandOne);
+        GroupOneBean TeamOne = new GroupOneBean();
+        TeamOne.CreateFirstTeam(typecomandOne);
         System.out.print(typecomandOne);
     }
+
+
 
     public static int rnd(int min, int max)
     {
