@@ -87,13 +87,14 @@ public class Game extends Canvas implements Runnable {
         warriorElf2 = getSprite("com/company/rase/image/Elves/WarriorElf.jpg");
         warriorElf3 = getSprite("com/company/rase/image/Elves/WarriorElf.jpg");
         Logic logic = new Logic();
-        logic.CreateGroupTeam();
+        logic.CreateGame();
+        logic.getTypecomandOne();
     }
 
     public void render() {
         BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
-            createBufferStrategy(2);
+      //      createBufferStrategy(2);
             requestFocus();
             return;
         }
@@ -109,8 +110,6 @@ public class Game extends Canvas implements Runnable {
         warriorElf1.draw(g, 250, 180);
         warriorElf2.draw(g, 250, 330);
         warriorElf3.draw(g, 250, 480);
-        JTextArea TextArea = new JTextArea(10, 30);
-        TextArea.setText("768678686868686868");
         g.dispose();
         bs.show();
     }
@@ -142,7 +141,15 @@ public class Game extends Canvas implements Runnable {
     public static void main(String[] args) {
         Game game = new Game();
         game.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        JFrame frame = new JFrame(Game.NAME);
+     /*   Frame1 frame1 = new Frame1();
+        frame1.setSize(800,400);
+        frame1.setResizable(false);
+        frame1.pack();
+        frame1.setLocationRelativeTo(null);
+        frame1.setVisible(true); */
+
+
+       /* JFrame frame = new JFrame(Game.NAME);
         JTextArea textArea2 = new JTextArea();
         frame.setSize(800, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -150,17 +157,15 @@ public class Game extends Canvas implements Runnable {
         frame.add(game, BorderLayout.CENTER);
         frame.pack();
         frame.setResizable(false);
-        frame.setVisible(true);
+        frame.setVisible(true); */
 
-        Frame1 frame1 = new Frame1();
-        frame1.pack();
-        frame1.setLocationRelativeTo(null);
-        frame1.setVisible(true);
+
         // frame.getContentPane().add(new JPanel());
         // ((JPanel)frame.getContentPane().getComponent(0)).add(new JLabel("Hello"));
         // frame.getContentPane().invalidate();
         //  JTextArea  TextArea = new JTextArea(10,30);
         //  TextArea.setText("54353454");
+
 
 
         game.start();
@@ -172,11 +177,18 @@ public class Game extends Canvas implements Runnable {
 
     public static class Frame1 extends JFrame {
         private JTextArea textArea1 = new JTextArea();
+        public Logic logic1 = new Logic();
+        private int type;
 
         public Frame1() {
             setLayout(new FlowLayout());
             add(textArea1);
-            textArea1.setText("Вывод стастики игры");
+            type = logic1.getTypecomandOne();
+            if (type == 0) {
+                textArea1.setText("Созданная команда расы ельфы");
+            } else {
+                textArea1.setText("Созданная команда расы люди");
+            }
         }
 
         public JTextArea getTextArea() {

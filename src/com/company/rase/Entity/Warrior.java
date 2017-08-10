@@ -2,20 +2,22 @@ package com.company.rase.Entity;
 
 public class Warrior {
 
-  private int health = 100;
-  private boolean privilegia; //false - общая, true - привелигированая
-  private int attackHP;
-  private int race;
+    public String name;
+    public float health = 100;
+    public boolean privilegia; //false - общая, true - привелигированая
+    public float attackHP;
+    public int race;
 
 
-    public Warrior(int health, boolean privilegia, int attackHP, int race) {
+    public Warrior(String name,float health, boolean privilegia, float attackHP, int race) {
+        this.name = name;
         this.health = health;
         this.privilegia = privilegia;
         this.attackHP = attackHP;
         this.race = race;
     }
 
-    public int AttackWarrior (int healthHP, int race) {
+    public float AttackWarrior (float healthHP, int race) {
 
         switch (race) {
             case 0: healthHP = healthHP-15;
@@ -26,6 +28,47 @@ public class Warrior {
 
         return healthHP;
 
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getHealth() {
+        return health;
+    }
+
+    public void setHealth(float health) {
+        this.health = health;
+    }
+
+    public boolean isPrivilegia() {
+        return privilegia;
+    }
+
+    public void setPrivilegia(boolean privilegia) {
+        this.privilegia = privilegia;
+    }
+
+    public float getAttackHP() {
+        return attackHP;
+    }
+
+    public void setAttackHP(float attackHP) {
+        this.attackHP = attackHP;
+    }
+
+    public int getRace() {
+        return race;
+    }
+
+    public void setRace(int race) {
+        this.race = race;
     }
 
 }
