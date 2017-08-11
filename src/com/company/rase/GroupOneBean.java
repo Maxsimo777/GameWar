@@ -53,10 +53,10 @@ public class GroupOneBean {
     public Mage CreateMage(int type){
         switch (type) {
             case 0:
-                mageOne = new Mage("МагЕльфов",100, typeGroup, 10);
+                mageOne = new Mage("МагЕльфов",100, typeGroup, 10,false);
                 break;
             case 1:
-                mageOne = new Mage("МагЛюдей",100, typeGroup, 4);
+                mageOne = new Mage("МагЛюдей",100, typeGroup, 4,false);
                 break;
         }
 

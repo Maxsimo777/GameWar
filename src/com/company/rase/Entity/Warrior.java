@@ -3,7 +3,7 @@ package com.company.rase.Entity;
 public class Warrior {
 
     public String name;
-    public float health = 100;
+    public float health;
     public boolean privilegia; //false - общая, true - привелигированая
     public float attackHP;
     public int race;

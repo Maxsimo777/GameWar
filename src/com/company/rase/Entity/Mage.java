@@ -3,16 +3,18 @@ package com.company.rase.Entity;
 public class Mage {
 
     public String name;
-    public float health = 100;
+    public float health;
     public int race;   //0 - эльфы, 1 - люди, 2- орки, 3 - нежити
     public float attackMage;
+    public boolean death;
 
 
-    public Mage(String name, float health, int race, float attackMage) {
+    public Mage(String name, float health, int race, float attackMage, boolean death) {
         this.name  = name;
         this.health = health;
         this.race = race;
         this.attackMage = attackMage;
+        this.death = death;
     }
 
     public float Improve(float attack) {
@@ -72,6 +74,14 @@ public class Mage {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isDeath() {
+        return death;
+    }
+
+    public void setDeath(boolean death) {
+        this.death = death;
     }
 
 

@@ -20,7 +20,7 @@ public class GroupTwoBean {
     public void CreateTwoTeam (int typeGroup) {
         switch (typeGroup) {
             case 2:
-                mageTwo = new Mage("Шаман",100, typeGroup, 10);
+                mageTwo = new Mage("Шаман",100, typeGroup, 10,false);
                 archerListTwo = new ArrayList<Archer>();
                 archerListTwo.add(new Archer("ЛучникОрков1",100, false, typeGroup, 7, 3));
                 archerListTwo.add(new Archer("ЛучникОрков2",100, false, typeGroup, 7, 3));
@@ -32,7 +32,7 @@ public class GroupTwoBean {
                 warriorListTwo.add(new Warrior("Гоблин4",100, false, 15, typeGroup));
                 break;
             case 3:
-                mageTwo = new Mage("Некромант",100, typeGroup, 4);
+                mageTwo = new Mage("Некромант",100, typeGroup, 4,false);
                 archerListTwo = new ArrayList<Archer>();
                 archerListTwo.add(new Archer("Охотник1",100, false, typeGroup, 5, 3));
                 archerListTwo.add(new Archer("Охотник2",100, false, typeGroup, 5, 3));
